@@ -1,25 +1,31 @@
-package co.vini.Spring;
+package co.vini.Spring.Developer;
 
+import co.vini.Spring.Tasks.TaskModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
-public class ClientModel {
+public class DevModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
-    private int idade;
+    private String role;
+    @ManyToOne//many tasks to one developer
+    @JoinColumn(name = "tasks_id") //Foreign key
+    private TaskModel tasks;
 
-    public ClientModel() {
+    public DevModel() {
     }
 
-    public ClientModel(String name, String email, int idade) {
+    public DevModel(String name, String email, String role) {
         this.name = name;
         this.email = email;
-        this.idade = idade;
+        this.role = role;
     }
 
     public String getName() {
@@ -38,11 +44,11 @@ public class ClientModel {
         this.email = email;
     }
 
-    public int getIdade() {
-        return idade;
+    public String getRole() {
+        return role;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

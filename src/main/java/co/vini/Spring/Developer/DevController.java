@@ -1,4 +1,4 @@
-package co.vini.Spring;
+package co.vini.Spring.Developer;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 
-public class Controller {
+public class DevController {
 
     @GetMapping("/boasvindas")
     public String boasvindas(){
