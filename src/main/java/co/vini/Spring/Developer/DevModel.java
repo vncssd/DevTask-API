@@ -2,11 +2,15 @@ package co.vini.Spring.Developer;
 
 import co.vini.Spring.Tasks.TaskModel;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@Table(name = "tb_cadastro")
+@Table(name = "tb_register")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class DevModel {
 
     @Id
@@ -19,36 +23,4 @@ public class DevModel {
     @JoinColumn(name = "tasks_id") //Foreign key
     private TaskModel tasks;
 
-    public DevModel() {
-    }
-
-    public DevModel(String name, String email, String role) {
-        this.name = name;
-        this.email = email;
-        this.role = role;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }

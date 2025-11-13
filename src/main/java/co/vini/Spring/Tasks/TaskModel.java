@@ -3,11 +3,17 @@ package co.vini.Spring.Tasks;
 
 import co.vini.Spring.Developer.DevModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table (name = "tb_tasks")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class TaskModel {
 
     @Id
@@ -17,34 +23,5 @@ public class TaskModel {
     private String level;
     @OneToMany(mappedBy = "tasks") //one task to many devs
     private List<DevModel> developer;
-
-    public TaskModel(String level, String name, Long id) {
-        this.level = level;
-        this.name = name;
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
+    
 }
