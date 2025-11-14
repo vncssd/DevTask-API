@@ -23,8 +23,9 @@ public class DevModel {
     private String email;
 
     private String role;
-    
-    private String pfp_url;
+
+    @Column(name="pfp_url")
+    private String pfpUrl;
 
     @ManyToOne//many tasks to one developer
     @JoinColumn(name = "tasks_id") //Foreign key
