@@ -4,7 +4,7 @@ package co.vini.Spring.Developer;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping()
 
 public class DevController {
 
@@ -20,25 +20,25 @@ public class DevController {
     }
 
     //Read
-    @GetMapping("/all")
+    @GetMapping("/list")
     public String readAll(){
         return "Listing all...";
     }
 
     //Update
-    @PutMapping("/editByID")
+    @PutMapping("/edit")
     public String editByID(){
         return "Editing by ID...";
     }
 
     //Sort by ID
-    @GetMapping ("/sortByID")
+    @GetMapping ("/sort")
     public String sortById(){
         return "Sorting by ID...";
     }
 
     //Delete
-    @DeleteMapping("/deleteByID")
+    @DeleteMapping("/delete")
     public String deleteByID(){
         return "Deleting by ID...";
     }
