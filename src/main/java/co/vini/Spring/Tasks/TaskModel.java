@@ -2,6 +2,7 @@ package co.vini.Spring.Tasks;
 
 
 import co.vini.Spring.Developer.DevModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,6 @@ public class TaskModel {
     private String level;
 
     @OneToMany(mappedBy = "tasks") //one task to many devs
+    @JsonIgnore
     private List<DevModel> developer;
-
 }

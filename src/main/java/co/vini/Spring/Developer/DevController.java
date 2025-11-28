@@ -3,10 +3,18 @@ package co.vini.Spring.Developer;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping()
+@RequestMapping("/dev")
 
 public class DevController {
+
+    private DevService devService;
+
+    public DevController(DevService devService) {
+        this.devService = devService;
+    }
 
     @GetMapping("/boasvindas")
     public String boasvindas(){
@@ -21,8 +29,8 @@ public class DevController {
 
     //Read
     @GetMapping("/list")
-    public String readAll(){
-        return "Listing all...";
+    public List<DevModel> readAll(){
+        return devService.listDevs();
     }
 
     //Update
