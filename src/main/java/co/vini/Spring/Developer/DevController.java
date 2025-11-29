@@ -33,18 +33,17 @@ public class DevController {
         return devService.listDevs();
     }
 
+    //List by ID
+    @GetMapping ("/list/{id}")
+    public DevModel listDevsById(@PathVariable Long id){
+        return devService.listDevsById(id);
+    }
+
     //Update
     @PutMapping("/edit")
     public String editByID(){
         return "Editing by ID...";
     }
-
-    //Sort by ID
-    @GetMapping ("/sort")
-    public String sortById(){
-        return "Sorting by ID...";
-    }
-
     //Delete
     @DeleteMapping("/delete")
     public String deleteByID(){
