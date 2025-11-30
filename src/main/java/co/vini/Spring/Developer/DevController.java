@@ -23,8 +23,8 @@ public class DevController {
 
     //Create
     @PostMapping("/add")
-    public String createDev() {
-        return "Dev Registred";
+    public DevModel createDev(@RequestBody DevModel devModel) {
+        return devService.createDev(devModel);
     }
 
     //Read

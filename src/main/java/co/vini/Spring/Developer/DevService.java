@@ -26,4 +26,8 @@ public class DevService {
         return devModelOptional.orElse(null);
     }
 
+    public DevModel createDev(DevModel devModel){
+        return devRepository.save(devModel);
+    }
+
 }
