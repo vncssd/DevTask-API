@@ -44,10 +44,11 @@ public class DevController {
     public String editByID(){
         return "Editing by ID...";
     }
+
     //Delete
-    @DeleteMapping("/delete")
-    public String deleteByID(){
-        return "Deleting by ID...";
+    @DeleteMapping("/delete/{id}")
+    public void deleteByID(@PathVariable Long id){
+        devService.deleteDev(id);
     }
 
  }

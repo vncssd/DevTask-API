@@ -30,4 +30,8 @@ public class DevService {
         return devRepository.save(devModel);
     }
 
+    public void deleteDev(Long id){
+        devRepository.deleteById(id);
+    }
+
 }
