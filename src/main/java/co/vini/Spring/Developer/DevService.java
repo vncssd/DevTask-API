@@ -34,4 +34,12 @@ public class DevService {
         devRepository.deleteById(id);
     }
 
+    public DevModel updateDev(Long id, DevModel devModelUpdated){
+        if (devRepository.existsById(id)){
+            devModelUpdated.setId(id);
+            return devRepository.save(devModelUpdated);
+        }
+        return null;
+    }
+
 }

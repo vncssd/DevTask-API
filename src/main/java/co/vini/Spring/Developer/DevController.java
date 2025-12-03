@@ -40,9 +40,9 @@ public class DevController {
     }
 
     //Update
-    @PutMapping("/edit")
-    public String editByID(){
-        return "Editing by ID...";
+    @PutMapping("/update/{id}")
+    public DevModel update(@PathVariable Long id, @RequestBody DevModel devModelUpdated){
+        return devService.updateDev(id,devModelUpdated);
     }
 
     //Delete
