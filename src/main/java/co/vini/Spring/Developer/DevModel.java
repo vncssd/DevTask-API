@@ -27,6 +27,9 @@ public class DevModel {
     @Column(name="pfp_url")
     private String pfpUrl;
 
+    @Column(name="rank")
+    private String rank;
+
     @ManyToOne//many tasks to one developer
     @JoinColumn(name = "tasks_id") //Foreign key
     private TaskModel tasks;

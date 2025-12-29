@@ -23,25 +23,25 @@ public class DevController {
 
     //Create
     @PostMapping("/add")
-    public DevModel createDev(@RequestBody DevModel devModel) {
-        return devService.createDev(devModel);
+    public DevDTO createDev(@RequestBody DevDTO dev) {
+        return devService.createDev(dev);
     }
 
     //Read
     @GetMapping("/list")
-    public List<DevModel> readAll(){
+    public List<DevDTO> readAll(){
         return devService.listDevs();
     }
 
     //List by ID
     @GetMapping ("/list/{id}")
-    public DevModel listDevsById(@PathVariable Long id){
+    public DevDTO listDevsById(@PathVariable Long id){
         return devService.listDevsById(id);
     }
 
     //Update
     @PutMapping("/update/{id}")
-    public DevModel update(@PathVariable Long id, @RequestBody DevModel devModelUpdated){
+    public DevDTO update(@PathVariable Long id, @RequestBody DevDTO devModelUpdated){
         return devService.updateDev(id,devModelUpdated);
     }
 
