@@ -1,7 +1,6 @@
 package co.vini.Spring.Developer;
 
 import co.vini.Spring.Tasks.TaskModel;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
