@@ -6,17 +6,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/tasks")
 
-public class TasksController {
+public class TaskController {
 
-    private TasksService tasksService;
+    private TaskService taskService;
 
-    public TasksController(TasksService tasksService) {
-        this.tasksService = tasksService;
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
     }
 
     @PostMapping("/add")
     public TaskDTO createTask(@RequestBody TaskDTO task){
-        return tasksService.createTask(task);
+        return taskService.createTask(task);
     }
 
     @PutMapping("/edit")
@@ -26,16 +26,16 @@ public class TasksController {
 
     @DeleteMapping("/delete/{id}")
     public void deleteTask(@PathVariable Long id){
-        tasksService.deleteTask(id);
+        taskService.deleteTask(id);
     }
 
     @GetMapping("/list")
     public List <TaskDTO> listTasks(){
-        return tasksService.listTask();
+        return taskService.listTask();
     }
 
     @GetMapping("/list/{id}")
     public TaskDTO listTaskById(@PathVariable Long id){
-        return tasksService.listTaskById(id);
+        return taskService.listTaskById(id);
     }
 }

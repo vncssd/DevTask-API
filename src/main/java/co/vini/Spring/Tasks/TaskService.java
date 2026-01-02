@@ -1,6 +1,5 @@
 package co.vini.Spring.Tasks;
 
-import co.vini.Spring.Developer.DevMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,12 +7,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class TasksService {
+public class TaskService {
 
     private final TaskMapper taskMapper;
     private TaskRepository taskRepository;
 
-    public TasksService(TaskRepository taskRepository, TaskMapper taskMapper) {
+    public TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
         this.taskRepository = taskRepository;
         this.taskMapper = taskMapper;
     }
