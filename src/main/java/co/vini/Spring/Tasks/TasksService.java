@@ -1,33 +1,41 @@
 package co.vini.Spring.Tasks;
 
+import co.vini.Spring.Developer.DevMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TasksService {
 
+    private final TaskMapper taskMapper;
     private TaskRepository taskRepository;
 
-    public TasksService(TaskRepository taskRepository) {
+    public TasksService(TaskRepository taskRepository, TaskMapper taskMapper) {
         this.taskRepository = taskRepository;
+        this.taskMapper = taskMapper;
     }
 
     //create
-    public TaskModel createTask(TaskModel taskModel){
-        return taskRepository.save(taskModel);
+    public TaskDTO createTask(TaskDTO taskDTO){
+        TaskModel task = taskMapper.map(taskDTO);
+        return taskMapper.map(taskRepository.save(task));
     }
 
     //read
-    public List<TaskModel> listTask(){
-        return taskRepository.findAll();
+    public List<TaskDTO> listTask(){
+        List<TaskModel> tasks = taskRepository.findAll();
+        return tasks.stream()
+                .map(taskMapper::map)
+                .collect(Collectors.toList());
     }
 
     //read(by id)
-    public TaskModel listTaskById(Long id){
+    public TaskDTO listTaskById(Long id){
         Optional<TaskModel> taskModelOptional = taskRepository.findById(id);
-        return taskModelOptional.orElse(null);
+        return taskModelOptional.map(taskMapper::map).orElse(null);
     }
 
     //update
