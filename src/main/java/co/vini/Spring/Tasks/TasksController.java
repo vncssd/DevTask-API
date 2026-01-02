@@ -1,6 +1,4 @@
 package co.vini.Spring.Tasks;
-
-import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +15,8 @@ public class TasksController {
     }
 
     @PostMapping("/add")
-    public TaskModel createTask(@RequestBody TaskModel taskModel){
-        return tasksService.createTask(taskModel);
+    public TaskDTO createTask(@RequestBody TaskDTO task){
+        return tasksService.createTask(task);
     }
 
     @PutMapping("/edit")
@@ -32,12 +30,12 @@ public class TasksController {
     }
 
     @GetMapping("/list")
-    public List <TaskModel> listTasks(){
+    public List <TaskDTO> listTasks(){
         return tasksService.listTask();
     }
 
     @GetMapping("/list/{id}")
-    public TaskModel listTaskById(@PathVariable Long id){
+    public TaskDTO listTaskById(@PathVariable Long id){
         return tasksService.listTaskById(id);
     }
 }
