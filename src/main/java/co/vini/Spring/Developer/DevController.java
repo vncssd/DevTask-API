@@ -1,6 +1,9 @@
 package co.vini.Spring.Developer;
 
 
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,39 +19,59 @@ public class DevController {
         this.devService = devService;
     }
 
-    @GetMapping("/boasvindas")
-    public String boasvindas(){
-        return "Olá Mundo! Meu Primeiro EndPoint";
-    }
-
-    //Create
     @PostMapping("/add")
-    public DevDTO createDev(@RequestBody DevDTO dev) {
-        return devService.createDev(dev);
+    public ResponseEntity<String> createDev(@RequestBody DevDTO dev) {
+        DevDTO newDev = devService.createDev(dev);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("DEV ADDED SUCCESFULL: " + newDev.getName() + " ID: " + newDev.getId());
     }
 
-    //Read
     @GetMapping("/list")
-    public List<DevDTO> readAll(){
-        return devService.listDevs();
+    public ResponseEntity<List<DevDTO>> readAll(){
+        List<DevDTO> listedDevs = devService.listDevs();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(listedDevs);
     }
 
-    //List by ID
     @GetMapping ("/list/{id}")
-    public DevDTO listDevsById(@PathVariable Long id){
-        return devService.listDevsById(id);
+    public ResponseEntity<?> listDevsById(@PathVariable Long id){
+        DevDTO dev = devService.listDevsById(id);
+        if (dev != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(dev);
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("DEV WITH ID " + id + " NOT FOUND");
+        }
     }
 
-    //Update
     @PutMapping("/update/{id}")
-    public DevDTO update(@PathVariable Long id, @RequestBody DevDTO devModelUpdated){
-        return devService.updateDev(id,devModelUpdated);
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody DevDTO devModelUpdated){
+        DevDTO dev = devService.updateDev(id,devModelUpdated);
+
+        if (dev != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("DEV WITH ID " + id + " UPDATED");
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("DEV WITH ID " + id + " NOT FOUND");
+        }
     }
 
-    //Delete
     @DeleteMapping("/delete/{id}")
-    public void deleteByID(@PathVariable Long id){
+    public ResponseEntity<String> deleteByID(@PathVariable Long id){
         devService.deleteDev(id);
+
+        if (devService.listDevsById(id) != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("DEV DELETED SUCCESFULLY ID: " + id);
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("DEV WITH ID " + id + " NOT FOUND");
+        }
     }
 
  }
