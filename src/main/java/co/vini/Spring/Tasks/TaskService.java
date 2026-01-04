@@ -38,6 +38,18 @@ public class TaskService {
     }
 
     //update
+    public TaskDTO updateTask(Long id, TaskDTO task){
+        Optional<TaskModel> taskModelOptional = taskRepository.findById(id);
+        if(taskModelOptional.isPresent()){
+            TaskModel updatedTask = taskMapper.map(task);
+            updatedTask.setId(id);
+            TaskModel savedTask = taskRepository.save(updatedTask);
+            return taskMapper.map(savedTask);
+        }
+        else{
+            return null;
+        }
+    }
 
     //delete
     public void deleteTask(Long id){
