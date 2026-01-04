@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DevController {
 
-    private DevService devService;
+    private final DevService devService;
 
     public DevController(DevService devService) {
         this.devService = devService;

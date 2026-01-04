@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class TaskService {
 
     private final TaskMapper taskMapper;
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
     public TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
         this.taskRepository = taskRepository;

@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 @Service
 public class DevService {
 
-    private DevRepository devRepository;
-    private DevMapper devMapper;
+    private final DevRepository devRepository;
+    private final DevMapper devMapper;
 
     public DevService(DevRepository devRepository, DevMapper devMapper) {
         this.devRepository = devRepository;
