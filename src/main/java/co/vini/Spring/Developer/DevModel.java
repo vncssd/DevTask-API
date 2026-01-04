@@ -4,13 +4,12 @@ import co.vini.Spring.Tasks.TaskModel;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "tb_register")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString(exclude = "tasks")
 public class DevModel {
 
     @Id
